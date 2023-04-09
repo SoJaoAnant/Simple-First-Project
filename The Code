@@ -1,0 +1,73 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+
+    vector<int> table_of_ten;
+    vector<int> set{1, 2, 3, 4, 5, 6, 7, 8, 9};
+    int cont;
+    int pop;
+    cout << "drop in some series of numbers from 1 to 9 with one number missing" << endl;
+
+    while (table_of_ten.size() < 8)
+    {
+        cin >> pop;
+        if ((pop <= 9) && (pop >= 1))
+        {
+            table_of_ten.push_back(pop);
+        }
+        else
+        {
+            cout << "please enter a number between 9 and 1" << endl;
+        }
+    }
+
+    cout << "Kudos!! you have successfully created a serie with one number missing as follows:" << endl;
+
+    for (auto it = table_of_ten.begin(); it != table_of_ten.end(); ++it)
+    {
+        cout << *it << " ";
+    }
+    cout << endl;
+
+    cout << "allow me to find the missing number in your series... (1 to continue, 0 to exit)" << endl;
+    cin >> cont;
+
+    if (cont == 1)
+    {
+
+        for (auto it = table_of_ten.begin(); it != table_of_ten.end(); it++)
+        {
+            for (auto its = set.begin(); its != set.end(); its++)
+            {
+                if (*it == *its)
+                {
+                    set.erase(its);
+                    break;
+                }
+                else
+                {
+                    continue;
+                }
+            }
+        }
+
+        for (auto its = set.begin(); its != set.end(); its++)
+        {
+            cout << "the missing number is " << *its << endl;
+        }
+    }
+
+    else if (cont == 0)
+    {
+        cout << "bye bye" << endl;
+    }
+
+    else
+    {
+        cout << "you had to type either 1 or 0!! bye!!" << endl;
+    }
+
+    return 0;
+}
